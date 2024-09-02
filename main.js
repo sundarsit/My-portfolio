@@ -15,3 +15,7 @@ $("figure").mouseleave(
       $(this).removeClass("hover");
     }
   );
+  function toggleMenu() {
+    const navLinks = document.getElementById('nav-links');
+    navLinks.classList.toggle('open');
+}
