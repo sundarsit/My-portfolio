@@ -656,3 +656,130 @@ nav ul li a:hover {
         display: flex;
     }
 }
+
+
+
+
+
+
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  text-shadow: 0 0 5px #000000, 0 0 10px #0c1313;
+}
+h1, h2, h3, h4 {
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  text-shadow: 0 0 10px #000000, 0 0 20px rgb(0, 0, 0);
+}
+
+span {
+  color: #ff4081;
+  text-shadow: 0 0 5px #000000, 0 0 10px #000000;
+}
+
+a, p {
+  color: #f0f0f0;
+}
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7); /* translucent background */
+  z-index: 1000;
+  padding: 10px 12%;
+  backdrop-filter: blur(10px); /* optional blur effect */
+}
+
+.maincontent {
+  margin-top: 80px; /* adjust based on nav height */
+}
+
+
+#home-sci a {
+  position: relative;
+}
+
+#home-sci a::before {
+  content: attr(data-label);
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #05cdfacc;
+  color: #ffffff;
+  padding: 5px 10px;
+  font-size: 18px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+  z-index: 1000;
+}
+
+#home-sci a:hover::before {
+  opacity: 1;
+  top: -45px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container, .container1, .container2 {
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  .container1, .container2 {
+    grid-template-columns: 1fr;
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  #headertext {
+    font-size: 20px;
+  }
+
+  .maincontent {
+    margin-top: 100px;
+  }
+
+  .contact-inputs, .contact-inputs1 {
+    width: 100%;
+  }
+}
+html, body {
+  overflow-x: hidden;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}

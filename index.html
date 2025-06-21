@@ -3,12 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Portfolio</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<script>
+function toggleMenu() {
+  document.getElementById("nav-links").classList.toggle("open");
+}
+</script>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <canvas id="bg"></canvas>
+
     <div id="header">
         <div class="container">
             <nav class="navbarr">
@@ -38,12 +51,12 @@
                     
                 <h3>        A Self Motivated,Highly Passionated and Hard working fresher looking for an oppurtunity to work in an Challenging Organization to utilize my skill and Knowledge to work the organization.</h3>
             </div>
-            <div id="home-sci">
-                <a href="https://www.linkedin.com/in/sundarsit/"><i class='bx bxl-linkedin'></i></a>
-                <a href="https://github.com/sundarsit"><i class='bx bxl-github' ></i></a>
-                <a href="mailto:ezhil41083@gmail.com"><i class='bx bx-envelope' ></i></a>
-                <a href="https://www.canva.com/design/DAGKvCaSsFg/ojGYbFdHt3-MXizDRDsb7A/view?utm_content=DAGKvCaSsFg&utm_campaign=designshare&utm_medium=link&utm_source=editor"><i class='bx bxs-contact' ></i></a>
-            </div>
+           <div id="home-sci">
+  <a href="https://www.linkedin.com/in/sundar-sit/" data-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+  <a href="https://github.com/sundarsit" data-label="GitHub"><i class='bx bxl-github'></i></a>
+  <a href="mailto:ezhil41083@gmail.com" data-label="Mail"><i class='bx bx-envelope'></i></a>
+  <a href="https://www.canva.com/design/...yourresume" data-label="Resume"><i class='bx bxs-contact'></i></a>
+</div>
             <a href="#About" class="btn-box">More About Me</a>
         </div>
     </div>
@@ -213,5 +226,48 @@
         </form>
 
     </main>
+<script>
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg') });
+
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  camera.position.z = 1;
+
+  const starGeometry = new THREE.BufferGeometry();
+  const starCount = 10000;
+  const positions = [];
+
+  for (let i = 0; i < starCount; i++) {
+    positions.push((Math.random() - 0.5) * 2000);
+    positions.push((Math.random() - 0.5) * 2000);
+    positions.push((Math.random() - 0.5) * 2000);
+  }
+
+  starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 1 });
+  const starField = new THREE.Points(starGeometry, starMaterial);
+  scene.add(starField);
+
+  function animate() {
+    requestAnimationFrame(animate);
+    starField.rotation.x += 0.0005;
+    starField.rotation.y += 0.0005;
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+</script>
+
+
+
+
 </body>
 </html>
